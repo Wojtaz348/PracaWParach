@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:PracaWParach"
+             x:Class="PracaWParach.MainPage"
+             Title="Pomodoro App">
+
+    <ContentPage.Content>
+        <StackLayout Padding="20" Spacing="15">
+
+            <Label Text="Time Tracking App"
+                   FontSize="24"
+                   HorizontalOptions="Center"
+                   FontAttributes="Bold" />
+
+
+            <Button Text="Start Pomodoro Timer"
+                    Clicked="StartPomodoroTimer"
+                    BackgroundColor="DarkOrange"
+                    TextColor="White"
+                    CornerRadius="10" />
+
+
+            <Label Text="Projects:"
+                   FontSize="18"
+                   FontAttributes="Bold" />
+
+            <CollectionView ItemsSource="{Binding Projects}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Border Padding="10"
+                               BackgroundColor="LightGray"
+                               Margin="0, 5, 0, 5">
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="{Binding Name}"
+                                       FontSize="16"
+                                       VerticalOptions="Center" />
+                                <Label Text="{Binding HoursWorked, StringFormat='Hours Worked: {0:F2}'}"
+                                       FontSize="14"
+                                       HorizontalOptions="EndAndExpand"
+                                       VerticalOptions="Center" />
+                                <Label Text="{Binding Earnings, StringFormat='Earnings: ${0:F2}'}"
+                                       FontSize="14"
+                                       HorizontalOptions="End"
+                                       VerticalOptions="Center" />
+                            </StackLayout>
+                        </Border>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+
+            <Button Text="Export Report to PDF"
+                    Clicked="ExportReportToPdf"
+                    BackgroundColor="DarkGreen"
+                    TextColor="White"
+                    CornerRadius="10" />
+
+
+            <Entry x:Name="ProjectNameEntry"
+                   Placeholder="Enter project name"
+                   FontSize="16" />
+            <Button Text="Add Project"
+                    Clicked="AddProjectButton"
+                    BackgroundColor="Blue"
+                    TextColor="White"
+                    CornerRadius="10" />
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
